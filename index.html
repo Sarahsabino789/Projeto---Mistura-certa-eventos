@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mistura Certa | Open Bar, Churrasco e Feijoada para eventos</title>
+  <meta name="description" content="Open bar, buffet de churrasco e feijoada com serviço completo para o seu evento. Solicite um orçamento pelo WhatsApp.">
+  <meta name="theme-color" content="#121212">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { ink: "#121212", surface: "#1A1A1A", gold: "#D4AF37", coral: "#FF6B35", mint: "#2A9D8F", mute: "#B0B0B0" },
+      fontFamily: { display: ["'Playfair Display'", "serif"], sans: ["'DM Sans'", "sans-serif"] }
+    } } };
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="font-sans">
+
+<!-- HEADER -->
+<header id="header" class="fixed inset-x-0 top-0 z-50 border-b border-white/10 backdrop-blur transition-colors">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <a href="#inicio" aria-label="Mistura Certa - início">
+      <img src="assets/img/logo.png" alt="Mistura Certa Buffet & Open Bar" class="h-10 w-auto rounded-md bg-white" onerror="this.replaceWith(document.createTextNode('Mistura Certa'))">
+    </a>
+    <nav class="hidden gap-8 text-sm md:flex" aria-label="Principal">
+      <a href="#servicos" class="hover:text-gold">Serviços</a>
+      <a href="#sobre" class="hover:text-gold">Sobre nós</a>
+      <a href="#galeria" class="hover:text-gold">Galeria</a>
+      <a href="#contato" class="hover:text-gold">Contato</a>
+    </nav>
+    <a href="#contato" class="btn btn-primary hidden md:inline-flex">Solicitar orçamento →</a>
+    <button id="menu-toggle" class="md:hidden p-2" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <nav id="menu" class="hidden border-t border-white/10 bg-ink px-5 py-4 md:hidden" aria-label="Menu mobile">
+    <div class="flex flex-col gap-4 text-sm">
+      <a href="#servicos">Serviços</a><a href="#sobre">Sobre nós</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a>
+      <a href="#contato" class="btn btn-primary">Solicitar orçamento →</a>
+    </div>
+  </nav>
+</header>
+
+<main id="inicio">
+
+<!-- HERO (altura reduzida) -->
+<section class="relative flex min-h-[78vh] items-center overflow-hidden pt-24 pb-24 lg:max-h-[780px]">
+  <div class="frame absolute inset-0 rounded-none">
+    <img src="assets/img/hero.jpg" alt="" fetchpriority="high" onerror="this.remove()">
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/30"></div>
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent"></div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-6xl px-5">
+    <span class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[.2em] text-gold">✦ Experiências para celebrar</span>
+    <h1 class="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
+      O sabor que faz seu evento ser <span class="text-grad">inesquecível.</span>
+    </h1>
+    <p class="mt-5 max-w-lg text-base leading-relaxed text-white/80">
+      Open bar, churrasco e feijoada com serviço completo, ingredientes selecionados e aquele cuidado que transforma encontros em grandes memórias.
+    </p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href="#contato" class="btn btn-primary">Quero um orçamento →</a>
+      <a href="#servicos" class="btn btn-ghost">Conheça nossos serviços</a>
+    </div>
+    <dl class="mt-9 flex max-w-xl flex-wrap gap-x-8 gap-y-2 border-t border-white/10 pt-5 text-sm text-mute">
+      <div class="flex items-baseline gap-2"><dt class="font-display text-xl text-gold">100%</dt><dd>personalizado</dd></div>
+      <div class="flex items-baseline gap-2"><dt class="font-display text-xl text-gold">3</dt><dd>experiências completas</dd></div>
+      <div class="flex items-baseline gap-2"><dt class="font-display text-xl text-gold">1</dt><dd>equipe apaixonada</dd></div>
+    </dl>
+  </div>
+
+  <!-- Barra de orçamento rápido (inspirada no site modelo) -->
+  <form id="quick-form" class="glass absolute inset-x-5 bottom-5 mx-auto hidden max-w-4xl items-end gap-3 rounded-2xl p-3 lg:flex">
+    <label class="flex-1 text-[11px] text-mute">Tipo de evento
+      <select id="q-tipo" class="field mt-1 !py-2" required><option value="">Selecione</option><option>Casamento</option><option>Aniversário</option><option>Confraternização</option><option>Evento corporativo</option><option>Outro</option></select></label>
+    <label class="flex-1 text-[11px] text-mute">Data
+      <input id="q-data" type="date" class="field mt-1 !py-2"></label>
+    <label class="flex-1 text-[11px] text-mute">Convidados
+      <input id="q-convidados" type="number" min="1" placeholder="Ex: 80" class="field mt-1 !py-2"></label>
+    <button class="btn btn-primary">Orçamento rápido</button>
+  </form>
+</section>
+
+<!-- EXPERIÊNCIAS -->
+<section id="servicos" class="mx-auto max-w-6xl px-5 py-16 lg:py-20">
+  <div class="reveal max-w-xl">
+    <p class="eyebrow">Nossas experiências</p>
+    <h2 class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Uma mistura para cada <span class="text-gold-i">celebração.</span></h2>
+    <p class="mt-3 text-sm text-mute">Do primeiro brinde ao último prato, criamos cada detalhe para combinar com o seu evento.</p>
+  </div>
+
+  <!-- Open bar -->
+  <article class="reveal relative mt-12 grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+    <div class="frame aspect-[4/3] lg:aspect-[5/4]">
+      <img src="assets/img/openbar.jpg" alt="Estação de open bar com frutas frescas e taças" loading="lazy" onerror="this.remove()">
+      <span class="glass absolute bottom-4 left-4 rounded-xl px-4 py-2.5 text-[11px] uppercase tracking-[.2em] text-mint">Especialidade da casa</span>
+    </div>
+    <div class="relative">
+      <h3 class="font-display text-3xl font-semibold leading-tight">Drinks que dão o tom da festa</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-mute">Uma estação elegante, bartenders atenciosos e bebidas preparadas na hora. Dos clássicos aos autorais, tudo é adaptado ao perfil dos seus convidados.</p>
+      <ul class="check mt-5 grid gap-3 sm:grid-cols-2">
+        <li>Drinks clássicos e autorais</li><li>Opções sem álcool</li><li>Frutas e insumos frescos</li><li>Estrutura completa de bar</li>
+      </ul>
+      <a href="#contato" class="link-cta mt-6">Montar meu open bar →</a>
+      <span class="num" aria-hidden="true">01</span>
+    </div>
+  </article>
+
+  <!-- Churrasco -->
+  <article class="reveal relative mt-16 grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+    <div class="relative order-2 lg:order-1">
+      <span class="grid h-11 w-11 place-items-center rounded-full border border-gold/30 bg-gold/10 text-gold" aria-hidden="true">🍴</span>
+      <p class="eyebrow mt-4">Buffet de churrasco</p>
+      <h3 class="mt-2 font-display text-3xl font-semibold leading-tight">Fogo, sabor e mesa farta</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-mute">Churrasco feito no ponto, com cortes selecionados e acompanhamentos que completam a experiência. A gente cuida do fogo enquanto você aproveita.</p>
+      <ul class="check mt-5 grid gap-3 sm:grid-cols-2">
+        <li>Carnes selecionadas</li><li>Churrasqueiro no local</li><li>Guarnições variadas</li><li>Montagem e serviço</li>
+      </ul>
+      <a href="#contato" class="link-cta mt-6">Planejar meu churrasco →</a>
+      <span class="num" aria-hidden="true">02</span>
+    </div>
+    <div class="order-1 lg:order-2">
+      <div data-carousel class="frame aspect-[4/3] lg:aspect-[5/4]">
+        <div class="slide active"><img src="assets/img/churrasco-1.jpg" alt="Linguiças na brasa" loading="lazy" onerror="this.remove()"></div>
+        <div class="slide"><img src="assets/img/churrasco-2.jpg" alt="Guarnições do buffet de churrasco" loading="lazy" onerror="this.remove()"></div>
+        <button class="car-btn right-3" data-dir="1" aria-label="Próxima foto">›</button>
+        <div class="dots absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5"></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Feijoada -->
+  <article class="reveal relative mt-16 grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+    <div data-carousel class="frame aspect-[4/3] lg:aspect-[5/4]">
+      <div class="slide active"><img src="assets/img/feijoada-1.jpg" alt="Mesa de feijoada com flores" loading="lazy" onerror="this.remove()"></div>
+      <div class="slide"><img src="assets/img/feijoada-2.jpg" alt="Detalhe do buffet de feijoada" loading="lazy" onerror="this.remove()"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pb-8">
+        <p class="font-display text-xl">Receita de encontro e afeto</p>
+      </div>
+      <button class="car-btn left-3" data-dir="-1" aria-label="Foto anterior">‹</button>
+      <div class="dots absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5"></div>
+    </div>
+    <div class="relative">
+      <span class="grid h-11 w-11 place-items-center rounded-full border border-gold/30 bg-gold/10 text-gold" aria-hidden="true">☘</span>
+      <p class="eyebrow mt-4">Buffet de feijoada</p>
+      <h3 class="mt-2 font-display text-3xl font-semibold leading-tight">Tradição servida com carinho</h3>
+      <p class="mt-3 max-w-md text-sm leading-relaxed text-mute">Uma feijoada completa, saborosa e feita para reunir. Servimos a receita com todos os acompanhamentos para um almoço marcante e sem preocupação.</p>
+      <ul class="check mt-5 grid gap-3 sm:grid-cols-2">
+        <li>Feijoada completa</li><li>Acompanhamentos tradicionais</li><li>Opção personalizada</li><li>Serviço do início ao fim</li>
+      </ul>
+      <a href="#contato" class="link-cta mt-6">Quero uma feijoada →</a>
+      <span class="num" aria-hidden="true">03</span>
+    </div>
+  </article>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="border-y border-white/10 bg-surface">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
+    <div class="reveal relative pb-16 sm:pb-0">
+      <div class="frame aspect-[4/3] sm:aspect-[5/4]">
+        <img src="assets/img/equipe.jpg" alt="Equipe da Mistura Certa uniformizada" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="glass absolute -bottom-0 right-4 max-w-[15rem] rounded-2xl border-gold/30 bg-ink/80 p-5 sm:-bottom-6 sm:-right-4">
+        <span aria-hidden="true">👥</span>
+        <h3 class="mt-2 font-display text-lg leading-snug">Gente cuidando de gente</h3>
+        <p class="mt-1 text-xs text-mute">Atendimento próximo e serviço feito com atenção.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <h2 class="font-display text-3xl font-semibold leading-tight lg:text-4xl">Seu evento merece ter <span class="text-gold-i">alma.</span></h2>
+      <p class="mt-4 text-sm leading-relaxed text-mute">Nascemos do prazer de servir bons drinks e criar uma atmosfera especial. Agora, levamos essa mesma dedicação para a mesa, com buffet de churrasco e feijoada.</p>
+      <p class="mt-3 text-sm leading-relaxed text-mute">Nosso compromisso é simples: ouvir você, entender a sua celebração e entregar uma experiência saborosa, bonita e acolhedora.</p>
+      <ul class="mt-7 grid grid-cols-3 gap-3">
+        <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold" aria-hidden="true">◷</span>Pontualidade</li>
+        <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold" aria-hidden="true">✦</span>Capricho</li>
+        <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold" aria-hidden="true">☘</span>Frescor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="mx-auto max-w-6xl px-5 py-16 lg:py-20">
+  <div class="reveal flex flex-wrap items-end justify-between gap-6">
+    <div>
+      <p class="eyebrow">Galeria</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Um pouco do que <span class="text-grad">preparamos.</span></h2>
+    </div>
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar galeria">
+      <button class="chip active" data-filter="openbar" aria-pressed="true">Open Bar</button>
+      <button class="chip" data-filter="churrasco" aria-pressed="false">Churrasco</button>
+      <button class="chip" data-filter="feijoada" aria-pressed="false">Feijoada</button>
+    </div>
+  </div>
+
+  <!-- Troque as imagens em assets/img/galeria/ -->
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <figure data-cat="openbar" class="frame aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/openbar-1.jpg" alt="Bancada de open bar com frutas" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="openbar" class="frame aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/openbar-2.jpg" alt="Drink servido com canela e hortelã" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="openbar" class="frame aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/openbar-3.jpg" alt="Estação de drinks ao ar livre" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="churrasco" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/churrasco-1.jpg" alt="Churrasco na brasa" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="churrasco" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/churrasco-2.jpg" alt="Guarnições do churrasco" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="churrasco" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/churrasco-3.jpg" alt="Mesa de churrasco montada" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="feijoada" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/feijoada-1.jpg" alt="Buffet de feijoada" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="feijoada" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/feijoada-2.jpg" alt="Panelas de feijoada" loading="lazy" onerror="this.remove()"></figure>
+    <figure data-cat="feijoada" class="frame hidden aspect-[4/3] !rounded-2xl"><img src="assets/img/galeria/feijoada-3.jpg" alt="Acompanhamentos da feijoada" loading="lazy" onerror="this.remove()"></figure>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="border-y border-white/10 bg-surface">
+  <div class="mx-auto max-w-6xl px-5 py-16 lg:py-20">
+    <div class="reveal mx-auto max-w-xl text-center">
+      <p class="eyebrow">Quem prova, recomenda</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Mensagens que deixam a gente <span class="text-gold-i">feliz.</span></h2>
+      <p class="mt-3 text-sm text-mute">O melhor feedback é saber que ajudamos a tornar cada celebração inesquecível.</p>
+    </div>
+    <!-- Substitua pelos textos reais dos clientes -->
+    <div class="reveal mt-10 grid gap-5 md:grid-cols-3">
+      <figure class="overflow-hidden rounded-3xl border border-white/10">
+        <figcaption class="wa-head flex items-center gap-3 px-5 py-3.5"><span class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-mint to-gold text-xs font-semibold">CM</span><span class="text-sm font-medium leading-tight">Camila &amp; Marcos<small class="block text-xs font-normal text-mute">Casamento</small></span></figcaption>
+        <blockquote class="wa-body p-4"><p class="wa-bubble p-3 text-sm leading-relaxed">Passando para agradecer! O bar foi um sucesso, os drinks estavam incríveis e a equipe foi super atenciosa.</p></blockquote>
+      </figure>
+      <figure class="overflow-hidden rounded-3xl border border-white/10">
+        <figcaption class="wa-head flex items-center gap-3 px-5 py-3.5"><span class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-mint to-gold text-xs font-semibold">RA</span><span class="text-sm font-medium leading-tight">Renata Alves<small class="block text-xs font-normal text-mute">Aniversário</small></span></figcaption>
+        <blockquote class="wa-body p-4"><p class="wa-bubble p-3 text-sm leading-relaxed">A feijoada estava maravilhosa e super bem servida. Todos os convidados elogiaram!</p></blockquote>
+      </figure>
+      <figure class="overflow-hidden rounded-3xl border border-white/10">
+        <figcaption class="wa-head flex items-center gap-3 px-5 py-3.5"><span class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-mint to-gold text-xs font-semibold">LP</span><span class="text-sm font-medium leading-tight">Lucas Pereira<small class="block text-xs font-normal text-mute">Confraternização</small></span></figcaption>
+        <blockquote class="wa-body p-4"><p class="wa-bubble p-3 text-sm leading-relaxed">O churrasco ficou impecável. Carne no ponto, atendimento nota 10 do começo ao fim.</p></blockquote>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="relative overflow-hidden">
+  <div class="frame absolute inset-0 rounded-none">
+    <img src="assets/img/contato-bg.jpg" alt="" loading="lazy" onerror="this.remove()">
+    <div class="absolute inset-0 bg-ink/90"></div>
+  </div>
+  <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
+    <div class="reveal">
+      <p class="eyebrow">Vamos celebrar?</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-5xl">Conte como será o seu <span class="text-grad">grande dia.</span></h2>
+      <p class="mt-4 max-w-md text-sm leading-relaxed text-mute">Preencha os dados e fale com a gente pelo WhatsApp. Vamos criar uma proposta sob medida para sua celebração.</p>
+      <p class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-11 w-11 place-items-center rounded-full bg-mint/20 text-mint" aria-hidden="true">✆</span>Atendimento rápido e personalizado</p>
+    </div>
+
+    <form id="quote-form" class="reveal glass rounded-3xl bg-surface/80 p-6 sm:p-8">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="text-xs sm:col-span-2">Nome completo
+          <input id="f-nome" name="nome" class="field mt-1.5" placeholder="Como podemos te chamar?" required autocomplete="name"></label>
+        <label class="text-xs sm:col-span-2">Tipo de evento
+          <select id="f-tipo" name="tipo" class="field mt-1.5" required><option value="">Selecione uma opção</option><option>Casamento</option><option>Aniversário</option><option>Confraternização</option><option>Evento corporativo</option><option>Outro</option></select></label>
+        <label class="text-xs">Região do evento
+          <input name="regiao" class="field mt-1.5" placeholder="Ex: Zona Sul" required></label>
+        <label class="text-xs">Bairro do evento
+          <input name="bairro" class="field mt-1.5" placeholder="Ex: Botafogo" required></label>
+        <label class="text-xs">Data do evento
+          <input id="f-data" name="data" type="date" class="field mt-1.5" required></label>
+        <label class="text-xs">Número de convidados
+          <input id="f-convidados" name="convidados" type="number" min="1" inputmode="numeric" class="field mt-1.5" placeholder="Ex: 80" required></label>
+      </div>
+      <button class="btn btn-primary mt-6 w-full !py-3.5">Solicitar pelo WhatsApp ✆</button>
+      <p class="mt-3 text-center text-xs text-mute">Sem compromisso. Retornaremos assim que possível.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 bg-black/60">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 text-sm text-mute">
+    <p>© <span id="year">2025</span> Mistura Certa Eventos. Feito para celebrar.</p>
+    <div class="flex items-center gap-5">
+      <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white">Instagram</a>
+      <a href="#inicio" class="hover:text-white">Voltar ao topo ⌃</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

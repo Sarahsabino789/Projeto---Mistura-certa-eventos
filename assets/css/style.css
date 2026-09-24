@@ -1,0 +1,76 @@
+/* Mistura Certa — personalização (Tailwind cuida do layout) */
+:root { --gold:#D4AF37; --coral:#FF6B35; --red:#E63946; --mint:#2A9D8F; }
+
+html { scroll-behavior:smooth; scroll-padding-top:76px; }
+body { background:#121212; color:#F8F9FA; -webkit-font-smoothing:antialiased; }
+:focus-visible { outline:2px solid var(--gold); outline-offset:3px; border-radius:6px; }
+
+/* Tipografia de destaque */
+.text-grad { font-style:italic; background:linear-gradient(90deg,#D4AF37 0%,#FF6B35 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.text-gold-i { font-style:italic; color:var(--gold); }
+.eyebrow { font-size:.7rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+
+/* Botões */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:9999px;
+  padding:.7rem 1.4rem; font-size:.85rem; font-weight:600; transition:transform .25s, filter .25s, background .25s; }
+.btn-primary { background:linear-gradient(90deg,var(--coral),var(--red)); box-shadow:0 10px 28px -10px rgba(255,107,53,.65); }
+.btn-primary:hover { transform:translateY(-2px); filter:brightness(1.1); }
+.btn-ghost { border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); }
+.btn-ghost:hover { background:rgba(255,255,255,.12); }
+.link-cta { display:inline-flex; gap:.5rem; align-items:center; color:#F2CB5C; font-size:.85rem; font-weight:600;
+  border-bottom:1px solid rgba(212,175,55,.4); padding-bottom:.25rem; transition:gap .25s; }
+.link-cta:hover { gap:.8rem; }
+
+/* Glassmorphism */
+.glass { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+
+/* Molduras de imagem: gradiente aparece se a foto ainda não existir */
+.frame { position:relative; overflow:hidden; border-radius:1.5rem; background:linear-gradient(135deg,#2b2117,#161616); }
+.frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* Lista com check dourado */
+.check li { display:flex; align-items:center; gap:.7rem; font-size:.85rem; }
+.check li::before { content:"✓"; flex:none; width:1.6rem; height:1.6rem; display:grid; place-items:center;
+  border:1px solid rgba(212,175,55,.4); background:rgba(212,175,55,.08); color:var(--gold); border-radius:9999px; font-size:.7rem; }
+
+/* Numeração decorativa ao fundo */
+.num { position:absolute; right:0; bottom:-1rem; font-family:'Playfair Display',serif; font-size:6rem; line-height:1;
+  color:rgba(255,255,255,.04); pointer-events:none; user-select:none; }
+
+/* Carrossel */
+.slide { position:absolute; inset:0; opacity:0; transition:opacity .6s; }
+.slide.active { opacity:1; }
+.car-btn { position:absolute; top:50%; transform:translateY(-50%); width:2rem; height:2rem; border-radius:9999px;
+  background:rgba(255,255,255,.85); color:#111; display:grid; place-items:center; z-index:2; }
+.dot { width:.4rem; height:.4rem; border-radius:9999px; background:rgba(255,255,255,.4); }
+.dot.active { background:#fff; }
+
+/* Filtros da galeria */
+.chip { border:1px solid rgba(255,255,255,.12); border-radius:9999px; padding:.5rem 1.1rem; font-size:.8rem;
+  color:#B0B0B0; transition:.25s; }
+.chip:hover { color:#fff; }
+.chip.active { border-color:rgba(212,175,55,.6); background:rgba(212,175,55,.12); color:#fff; }
+
+/* Depoimentos estilo WhatsApp */
+.wa-head { background:#1f2c34; }
+.wa-body { background:#0b141a; }
+.wa-bubble { background:#1f2c34; border-radius:.2rem 1rem 1rem 1rem; }
+
+/* Campos do formulário */
+.field { width:100%; border-radius:.9rem; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06);
+  padding:.8rem 1rem; font-size:.85rem; color:#fff; transition:border-color .25s; }
+.field::placeholder { color:#8a8a8a; }
+.field:focus { outline:none; border-color:var(--gold); }
+.field:user-invalid { border-color:var(--red); }
+select.field option { background:#1A1A1A; }
+
+/* Entrada (uma única revelação por seção) */
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .7s, transform .7s; }
+.reveal.in { opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .reveal { opacity:1; transform:none; transition:none; }
+  .slide { transition:none; }
+}
