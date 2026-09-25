@@ -1,0 +1,139 @@
+# Mistura Certa | Landing page de captação de orçamentos
+
+Landing page que mostra o trabalho da **Mistura Certa Eventos** (open bar, churrasco e feijoada) e entrega cada pedido de orçamento já organizado no WhatsApp da equipe. HTML semântico, Tailwind e JavaScript puro: sem build, sem framework e sem back-end.
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Responsivo](https://img.shields.io/badge/layout-mobile_first-2A9D8F)
+
+Implementação em código do protótipo interativo que desenhei no Figma. [Ver demonstração](#) · [Ver protótipo no Figma](#)
+
+## Problema e solução
+
+| Necessidade do negócio | O que a página faz |
+|---|---|
+| Mostrar a qualidade do serviço antes do primeiro contato | Hero, três experiências com fotos, galeria filtrável e depoimentos |
+| Receber pedidos completos, sem várias mensagens para levantar o básico | O formulário coleta tipo de evento, região, bairro, data e número de convidados e abre o WhatsApp com tudo preenchido |
+| Reduzir perguntas repetitivas | Cada serviço detalha o que está incluso; galeria e depoimentos esclarecem as dúvidas mais comuns |
+| Converter em qualquer ponto da rolagem | Botão de orçamento no header, no hero e nos blocos de serviço, além do orçamento rápido no hero |
+
+## Início rápido
+
+```bash
+git clone https://github.com/<seu-usuario>/mistura-certa.git
+cd mistura-certa
+python3 -m http.server 8000     # abra http://localhost:8000
+```
+
+Também funciona abrindo o `index.html` direto no navegador. Para receber os pedidos, altere o número em `js/main.js`:
+
+```js
+const WHATSAPP_NUMBER = "5521999999999"; // DDI + DDD + número, só dígitos
+```
+
+## O que a equipe recebe
+
+O visitante preenche o formulário e a página monta a mensagem e abre `wa.me` com o texto pronto:
+
+```
+Olá! Gostaria de um orçamento.
+
+*Nome:* Camila
+*Evento:* Casamento
+*Região:* Zona Sul
+*Bairro:* Botafogo
+*Data:* 20/12/2026
+*Convidados:* 80
+```
+
+O pedido chega com o essencial para montar a proposta, sem ida e volta para perguntar o básico.
+
+## Estrutura da página
+
+| Seção | Papel na conversão |
+|---|---|
+| Header fixo | Acesso permanente ao orçamento |
+| Hero | Promessa, chamada para ação e indicadores |
+| Nossas experiências | Detalha o que está incluso em Open Bar, Churrasco e Feijoada |
+| Sobre nós | Confiança e humanização do atendimento |
+| Galeria | Prova visual, filtrada por categoria |
+| Depoimentos | Prova social, no formato de conversa de WhatsApp |
+| Formulário | Conversão |
+| Rodapé | Fechamento e contatos |
+
+## Decisões técnicas
+
+| Decisão | Alternativa comum | Motivo |
+|---|---|---|
+| Tailwind para layout, CSS próprio para a identidade visual | Escrever todo o CSS à mão | Responsividade consistente; gradientes, vidro fosco e carrossel ficam isolados em um único arquivo |
+| JavaScript puro | Framework de front-end | As interações são simples (menu, carrossel, filtro, formulário); a página fica leve e roda em qualquer hospedagem estática |
+| Envio por WhatsApp (`wa.me`) | Back-end com e-mail ou CRM | É o canal que a equipe já usa: zero infraestrutura e resposta imediata |
+| Sem etapa de build | Bundler | Qualquer pessoa edita textos e fotos e publica |
+| Depoimentos como conversa de WhatsApp | Cards com estrelas | Reforça o canal de atendimento e passa autenticidade |
+
+## Personalização
+
+| O que mudar | Onde | Observação |
+|---|---|---|
+| Número do WhatsApp | `js/main.js` | Constante `WHATSAPP_NUMBER` |
+| Fotos | `assets/img/` | Manter os nomes dos arquivos |
+| Cores | `tailwind.config` no `index.html` e `:root` em `css/styles.css` | Paleta: grafite, dourado, laranja/vermelho e menta |
+| Textos e depoimentos | `index.html` | Blocos comentados por seção |
+| Categorias da galeria | `data-filter` e `data-cat` no `index.html` | Cada botão filtra as fotos de mesma categoria |
+
+## Qualidade
+
+- [x] Mobile first e responsivo do celular ao desktop
+- [x] HTML semântico, com seções comentadas
+- [x] Texto alternativo nas imagens e rótulos associados aos campos
+- [x] Foco visível para navegação por teclado
+- [x] Respeito a `prefers-reduced-motion`
+- [x] Validação nativa do formulário
+- [x] Imagens com `loading="lazy"`
+- [x] JavaScript sem dependências externas
+
+## Limites atuais
+
+- As fotos em `assets/img/` são de exemplo e precisam ser trocadas pelas reais.
+- Os depoimentos são ilustrativos e devem ser substituídos por mensagens reais de clientes.
+- O Tailwind vem por CDN, o que serve para desenvolvimento; em produção o ideal é compilar.
+- Ainda não há seção de perguntas frequentes, então o autoatendimento hoje depende dos detalhes dos serviços, da galeria e dos depoimentos.
+- Ainda não há SEO técnico, favicon nem métricas de acesso.
+
+## Próximas versões
+
+- [ ] Seção de perguntas frequentes (FAQ)
+- [ ] SEO técnico: meta tags, Open Graph, dados estruturados e sitemap
+- [ ] Favicon e ícones
+- [ ] Botão flutuante de WhatsApp
+- [ ] Tailwind compilado para produção
+- [ ] Publicação com domínio próprio e medição com Lighthouse
+
+<details>
+<summary>Estrutura de pastas</summary>
+
+```
+├── index.html
+├── css/styles.css     # identidade visual e componentes
+├── js/main.js         # menu, carrosséis, filtro e envio ao WhatsApp
+└── assets/img/        # logo, hero, seções e galeria
+```
+
+</details>
+
+<details>
+<summary>Solução de problemas</summary>
+
+- **O botão do WhatsApp não abre a conversa:** confira `WHATSAPP_NUMBER`, que precisa ter só dígitos e incluir o DDI.
+- **A página aparece sem estilo:** o Tailwind é carregado por CDN e exige conexão com a internet.
+- **As fotos não aparecem:** verifique se os nomes em `assets/img/` são iguais aos usados no `index.html`.
+
+</details>
+
+
+## Autor
+
+**Sarah Sabino**
+
+Projeto desenvolvido para a Mistura Certa Eventos..
