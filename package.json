@@ -1,0 +1,14 @@
+{
+  "name": "mistura-certa-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page da Mistura Certa Eventos.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
