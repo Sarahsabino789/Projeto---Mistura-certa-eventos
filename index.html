@@ -26,10 +26,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/imgs/sections/hero-1.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/imgs/sections/hero-slide-0.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <link href="assets/css/tailwind.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
 
@@ -76,13 +77,14 @@
   </nav>
 </header>
 
+<div id="smooth-wrapper"><div id="smooth-content">
 <main id="conteudo" tabindex="-1" class="outline-none">
 
 <section id="inicio" class="relative flex min-h-[80vh] items-center overflow-hidden pb-24 pt-32 lg:max-h-[800px]" aria-labelledby="hero-titulo">
   <div class="frame hero-bg absolute inset-0 !rounded-none" aria-hidden="true">
-    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-1.webp" alt="" fetchpriority="high">
-    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-2.webp" alt="" loading="lazy">
-    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-3.webp" alt="" loading="lazy">
+    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-slide-0.webp" alt="" fetchpriority="high">
+    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-slide-1.webp" alt="" fetchpriority="high">
+    <img width="1440" height="810" class="hero-slide" src="assets/imgs/sections/hero-slide-2.webp" alt="" loading="lazy">
     <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"></div>
     <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent"></div>
   </div>
@@ -102,14 +104,14 @@
 </section>
 
 <section id="servicos" class="mx-auto max-w-6xl px-5 py-20 lg:py-28" aria-labelledby="servicos-titulo">
-  <div class="reveal max-w-xl">
+  <div data-anim class="max-w-xl">
     <p class="eyebrow">O que a gente faz</p>
     <h2 id="servicos-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Do primeiro drink ao último prato, <span class="text-gold-i">com a mesma equipe.</span></h2>
     <p class="mt-3 text-sm text-mute">Open bar, churrasco e feijoada podem ser contratados juntos ou separados. Você escolhe o que a sua festa pede e a gente cuida de tudo.</p>
   </div>
 
-  <article class="reveal mt-14 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-    <div data-carousel class="frame aspect-square" role="region" aria-roledescription="carrossel" aria-label="Fotos do open bar">
+  <article class="mt-14 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+    <div data-carousel class="frame svc-media aspect-square" role="region" aria-roledescription="carrossel" aria-label="Fotos do open bar">
       <div class="slide"><img src="assets/imgs/galeria/bancada/bancada-piscina-tacas.webp" alt="Bancada de open bar à beira da piscina, com árvore de taças e frutas" width="1200" height="1200" loading="lazy"></div>
       <div class="slide"><img src="assets/imgs/sections/bartender-balcao-morangos.webp" alt="Bartender da Mistura Certa no balcão do open bar, com morangos e vodca" width="1200" height="1200" loading="lazy"></div>
       <div class="slide"><img src="assets/imgs/galeria/bancada/bancada-mesa-orquidea-gin.webp" alt="Mesa branca com orquídea, vodca de rótulo azul, gin, frutas e canecas de cobre" width="1440" height="1440" loading="lazy"></div>
@@ -127,7 +129,7 @@
     </div>
   </article>
 
-  <article class="reveal mt-20 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+  <article class="mt-20 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
     <div class="order-2 lg:order-1">
       <span class="grid h-11 w-11 place-items-center rounded-full border border-gold/30 bg-gold/10 text-gold"><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg></span>
       <p class="eyebrow mt-4">Buffet de churrasco</p>
@@ -136,11 +138,11 @@
       <ul class="check mt-6 grid gap-3 sm:grid-cols-2"><li>Carnes selecionadas</li><li>Churrasqueiro no local</li><li>Acompanhamentos variados</li><li>Montagem e serviço</li></ul>
       <a href="#contato" class="link-cta mt-7">Planejar meu churrasco <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="frame fit order-1 lg:order-2"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-carnes-linguica.webp" alt="Cubas com linguiça, picanha e cortes fatiados no buffet de churrasco" loading="lazy"></div>
+    <div class="frame fit svc-media order-1 lg:order-2"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-carnes-linguica.webp" alt="Cubas com linguiça, picanha e cortes fatiados no buffet de churrasco" loading="lazy"></div>
   </article>
 
-  <article class="reveal mt-20 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-    <div class="frame fit"><img width="1200" height="1200" src="assets/imgs/galeria/feijoada/feijoada-cozinheira-buffet.webp" alt="Cozinheira da equipe ao lado do buffet de feijoada e acompanhamentos" loading="lazy"><p class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pb-8 font-display text-xl">Aquele prato que reúne todo mundo</p></div>
+  <article class="mt-20 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+    <div class="frame fit svc-media"><img width="1200" height="1200" src="assets/imgs/galeria/feijoada/feijoada-cozinheira-buffet.webp" alt="Cozinheira da equipe ao lado do buffet de feijoada e acompanhamentos" loading="lazy"><p class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pb-8 font-display text-xl">Aquele prato que reúne todo mundo</p></div>
     <div>
       <span class="grid h-11 w-11 place-items-center rounded-full border border-gold/30 bg-gold/10 text-gold"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg></span>
       <p class="eyebrow mt-4">Buffet de feijoada</p>
@@ -153,9 +155,10 @@
 </section>
 
 <section class="apoio-sec" aria-label="Destaque">
-  <div class="apoio">
+  <div class="apoio" data-anim>
     <div class="apoio-img"><img width="1440" height="1919" src="assets/imgs/galeria/bancada/bancada-menu-hortela.webp" alt="Bancada de open bar com cardápio emoldurado, hortelã e garrafas" loading="lazy"></div>
-    <div class="apoio-txt">
+    <div class="apoio-txt liquid-card">
+      <canvas id="liquid" aria-hidden="true"></canvas><span class="liquid-tint" aria-hidden="true"></span>
       <p class="eyebrow">Como funciona</p>
       <p class="apoio-title font-display">Você conta a ideia, <span class="text-grad">a gente monta o cardápio.</span></p>
       <p class="apoio-desc">Equipe no local, atendimento em todo o Rio de Janeiro e orçamento rápido pelo WhatsApp.</p>
@@ -166,14 +169,16 @@
 
 <section class="mx-auto max-w-6xl px-5 py-20 lg:py-28" aria-labelledby="drinks-titulo">
   <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-    <div class="reveal">
+    <div>
+      <div data-anim>
       <p class="eyebrow">Direto do balcão</p>
       <h2 id="drinks-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Um gostinho do que sai no <span class="text-gold-i">nosso balcão.</span></h2>
       <p class="mt-3 max-w-md text-sm text-mute">Este é um exemplo do nosso cardápio. A carta final a gente fecha com você.</p>
-      <ul class="mt-8 space-y-6"><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Caipirinha e Caipivodka</span><span class="leader"></span><span class="text-xs text-gold">Brasileiro</span></div><p class="mt-1 text-sm text-mute">Cachaça ou vodca, fruta da estação e açúcar a gosto.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Moscow Mule</span><span class="leader"></span><span class="text-xs text-gold">Caneca de cobre</span></div><p class="mt-1 text-sm text-mute">Vodca, suco de limão e espuma de gengibre, servido na caneca de cobre.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Gin Tônica</span><span class="leader"></span><span class="text-xs text-gold">Botânicos</span></div><p class="mt-1 text-sm text-mute">Gin, especiarias, botânicos, fruta de sua preferência e água tônica.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Aperol Spritz</span><span class="leader"></span><span class="text-xs text-gold">Refrescante</span></div><p class="mt-1 text-sm text-mute">Aperol, espumante e água tônica, com uma laranja para finalizar.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Fitzgerald</span><span class="leader"></span><span class="text-xs text-gold">Clássico</span></div><p class="mt-1 text-sm text-mute">Gin, limão e um toque de angostura, do jeito que o bartender faz na hora.</p></li></ul>
-      <a href="#contato" class="link-cta mt-9">Montar meu cardápio de drinks <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="mt-8 space-y-6" data-drinks><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Caipirinha e Caipivodka</span><span class="leader"></span><span class="text-xs text-gold">Brasileiro</span></div><p class="mt-1 text-sm text-mute">Cachaça ou vodca, fruta da estação e açúcar a gosto.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Moscow Mule</span><span class="leader"></span><span class="text-xs text-gold">Caneca de cobre</span></div><p class="mt-1 text-sm text-mute">Vodca, suco de limão e espuma de gengibre, servido na caneca de cobre.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Gin Tônica</span><span class="leader"></span><span class="text-xs text-gold">Botânicos</span></div><p class="mt-1 text-sm text-mute">Gin, especiarias, botânicos, fruta de sua preferência e água tônica.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Aperol Spritz</span><span class="leader"></span><span class="text-xs text-gold">Refrescante</span></div><p class="mt-1 text-sm text-mute">Aperol, espumante e água tônica, com uma laranja para finalizar.</p></li><li><div class="flex items-baseline gap-3"><span class="font-display text-xl">Fitzgerald</span><span class="leader"></span><span class="text-xs text-gold">Clássico</span></div><p class="mt-1 text-sm text-mute">Gin, limão e um toque de angostura, do jeito que o bartender faz na hora.</p></li></ul>
+      <a href="#contato" class="link-cta mt-9" data-anim>Montar meu cardápio de drinks <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="reveal mx-auto w-full max-w-xs">
+    <div class="mx-auto w-full max-w-xs drinks-video" data-video-reveal>
       <div class="frame relative aspect-[9/16] overflow-hidden">
         <video
           class="absolute inset-0 h-full w-full object-cover"
@@ -181,6 +186,7 @@
           muted loop playsinline preload="metadata" controls
           aria-label="Vídeo: preparo de um Moscow Mule no balcão da Mistura Certa">
             <source src="assets/videos/moscow-mule-preparo.webm" type="video/webm">
+            <source src="assets/videos/moscow-mule-preparo.mp4" type="video/mp4">
         </video>
         <span class="glass pointer-events-none absolute left-3 top-3 rounded-full px-3 py-1 text-[11px] uppercase tracking-[.2em] text-gold">Feito na hora</span>
       </div>
@@ -191,7 +197,7 @@
 
 <section id="sobre" class="border-y border-white/10 bg-surface" aria-labelledby="sobre-titulo">
   <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
-    <div class="reveal relative">
+    <div data-anim class="team-wrap">
       <div class="frame fit team-frame"><img src="assets/imgs/sections/equipe.webp" alt="Equipe da Mistura Certa uniformizada, sorrindo" width="1000" height="1329" loading="lazy"></div>
       <div class="glass team-card">
         <svg class="ic !h-6 !w-6" aria-hidden="true"><use href="#i-users"/></svg>
@@ -199,11 +205,11 @@
         <p class="mt-1 text-xs text-mute">Atendimento próximo e serviço feito com atenção.</p>
       </div>
     </div>
-    <div class="reveal">
+    <div data-anim>
       <h2 id="sobre-titulo" class="font-display text-3xl font-semibold leading-tight lg:text-4xl">Seu evento merece ter <span class="text-gold-i">alma.</span></h2>
       <p class="mt-4 text-sm leading-relaxed text-mute">Nascemos do prazer de servir bons drinks e receber bem. Esse jeito de cuidar continua em tudo que a gente faz, do open bar ao churrasco e à feijoada.</p>
       <p class="mt-3 text-sm leading-relaxed text-mute">O compromisso é simples: escutar você, entender a festa que você quer e entregar isso com capricho, do primeiro brinde ao último prato.</p>
-      <ul class="mt-8 grid grid-cols-3 gap-3">
+      <ul class="mt-8 grid grid-cols-3 gap-3" data-pills>
         <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>Pontualidade</li>
         <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg></span>Capricho</li>
         <li class="glass flex flex-col items-center gap-2 rounded-2xl px-2 py-4 text-[11px] uppercase tracking-wider"><span class="grid h-9 w-9 place-items-center rounded-full bg-gold/15 text-gold"><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg></span>Frescor</li>
@@ -213,7 +219,7 @@
 </section>
 
 <section id="galeria" class="mx-auto max-w-6xl px-5 py-20 lg:py-28" aria-labelledby="galeria-titulo">
-  <div class="reveal flex flex-wrap items-end justify-between gap-6">
+  <div class="flex flex-wrap items-end justify-between gap-6">
     <div>
       <p class="eyebrow">Galeria</p>
       <h2 id="galeria-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Um pouco do que <span class="text-grad">preparamos.</span></h2>
@@ -239,16 +245,17 @@
     <figure data-cat="drinks" class="gal-item"><img width="940" height="1268" src="assets/imgs/galeria/drinks/drink-brinde-cartoes.webp" alt="Brinde com quatro drinks e cartões personalizados" loading="lazy"></figure>
     <figure data-cat="drinks" class="gal-item"><img width="1440" height="1800" src="assets/imgs/galeria/drinks/drink-chantilly-pimenta-rosa.webp" alt="Gin tônica com chantilly, alecrim e pimenta rosa" loading="lazy"></figure>
     <figure data-cat="drinks" class="gal-item"><img width="1440" height="1440" src="assets/imgs/galeria/drinks/drink-moscow-mule-azul.webp" alt="Moscow Mule azul na caneca de cobre, com hortelã e raspas de limão" loading="lazy"></figure>
+    <figure data-cat="drinks" class="gal-item"><img width="1200" height="1200" src="assets/imgs/galeria/drinks/drink-duo-color.webp" alt="Dois drinks de cores diferentes lado a lado" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="1440" height="1440" src="assets/imgs/galeria/bancada/bancada-neon-azul.webp" alt="Bar com iluminação neon, garrafas, frutas e cardápio emoldurado" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="1440" height="1440" src="assets/imgs/galeria/bancada/bancada-mesa-orquidea-gin.webp" alt="Mesa branca com orquídea, gin, vodca, frutas e canecas de cobre" loading="lazy"></figure>
-    <figure data-cat="bancada" class="gal-item hidden"><img width="1440" height="1440" src="assets/imgs/galeria/bancada/bancada-madeira-ripada.webp" alt="Balcão de madeira ripada com frutas, garrafas e canecas de cobre" loading="lazy"></figure>
+    <figure data-cat="bancada" class="gal-item hidden"><img width="1286" height="723" src="assets/imgs/galeria/bancada/bancada-mesa-orquidea-decoracao.webp" alt="Mesa decorada com orquídea e arranjos em um evento da Mistura Certa" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="1080" height="1080" src="assets/imgs/galeria/bancada/bancada-garrafas-vodka-gin.webp" alt="Garrafas de vodca e gin sobre a bancada, ao lado da piscina" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="1000" height="1000" src="assets/imgs/galeria/bancada/bancada-jardim-noturno.webp" alt="Mesa de open bar em jardim iluminado à noite" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="677" height="1200" src="assets/imgs/galeria/bancada/bancada-balcao-janela.webp" alt="Balcão de open bar com garrafas, frutas e cardápio emoldurado" loading="lazy"></figure>
     <figure data-cat="bancada" class="gal-item hidden"><img width="1440" height="1919" src="assets/imgs/galeria/bancada/bancada-menu-hortela.webp" alt="Bancada com cardápio, hortelã, frutas e garrafas" loading="lazy"></figure>
+    <figure data-cat="bancada" class="gal-item hidden"><img width="1440" height="1440" src="assets/imgs/galeria/bancada/bancada-madeira-ripada.webp" alt="Bancada de open bar com painel de madeira ripada ao fundo" loading="lazy"></figure>
     <figure data-cat="churrasco" class="gal-item hidden"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-churrasqueiros.webp" alt="Churrasqueiros preparando as carnes na churrasqueira de tijolos" loading="lazy"></figure>
     <figure data-cat="churrasco" class="gal-item hidden"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-carnes-linguica.webp" alt="Cubas com linguiça, picanha e cortes fatiados no buffet" loading="lazy"></figure>
-    <figure data-cat="churrasco" class="gal-item hidden"><img width="1440" height="810" src="assets/imgs/galeria/churrasco/churrasco-linguicas-brasa.webp" alt="Linguiças e picanha na grelha, sobre a brasa" loading="lazy"></figure>
     <figure data-cat="churrasco" class="gal-item hidden"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-carne-brasa.webp" alt="Cortes de carne assando na brasa" loading="lazy"></figure>
     <figure data-cat="churrasco" class="gal-item hidden"><img width="510" height="340" src="assets/imgs/galeria/churrasco/churrasco-carne-fogo.webp" alt="Carne fatiada com ervas, com fogo ao fundo" loading="lazy"></figure>
     <figure data-cat="churrasco" class="gal-item hidden"><img width="1080" height="1080" src="assets/imgs/galeria/churrasco/churrasco-churrasqueiro-vista-mar.webp" alt="Churrasqueiro preparando carnes e linguiças, com vista para o mar" loading="lazy"></figure>
@@ -263,26 +270,26 @@
 
 <section id="depoimentos" class="border-y border-white/10 bg-surface" aria-labelledby="dep-titulo">
   <div class="mx-auto max-w-6xl px-5 py-20 lg:py-28">
-    <div class="reveal mx-auto max-w-xl text-center">
+    <div data-anim class="mx-auto max-w-xl text-center">
       <p class="eyebrow">Quem provou, recomenda</p>
       <h2 id="dep-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Elogios de quem já <span class="text-gold-i">festejou com a gente.</span></h2>
     </div>
-    <div class="dep-list zoomable reveal">
+    <div class="dep-list zoomable">
       <figure class="glass dep-item"><img width="720" height="335" class="prova" src="assets/imgs/feedback/depoimento-whatsapp.webp" alt="Mensagem de cliente no WhatsApp: Foi ótimo! Muito obrigada pelo trabalho de vcs! Sucesso!" loading="lazy"></figure>
-      <figure class="glass dep-item"><img class="prova" src="assets/imgs/feedback/comentario-brunnnapla.webp" alt="Comentário no Instagram: Super recomendo, trabalho de excelência" width="411" height="53" loading="lazy"></figure>
-      <figure class="glass dep-item"><img class="prova" src="assets/imgs/feedback/comentario-ronaldojunior1982.webp" alt="Comentário no Instagram: Buffet de melhor qualidade, festa maravilhosa" width="395" height="56" loading="lazy"></figure>
-      <a href="https://www.instagram.com/misturacerta.eventos/" target="_blank" rel="noopener noreferrer" class="link-cta">Ver mais no Instagram <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <figure class="glass dep-item"><img class="prova" src="assets/imgs/feedback/comentario-brunnnapla.webp" alt="Comentário no Instagram: Super recomendo, trabalho de excelência" width="1000" height="146" loading="lazy"></figure>
+      <figure class="glass dep-item"><img class="prova" src="assets/imgs/feedback/comentario-ronaldojunior1982.webp" alt="Comentário no Instagram: Buffet de melhor qualidade, festa maravilhosa" width="1000" height="146" loading="lazy"></figure>
     </div>
+    <p class="dep-cta"><a href="https://www.instagram.com/misturacerta.eventos/" target="_blank" rel="noopener noreferrer" class="link-cta">Ver mais no Instagram <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
 
 <section id="convidados" class="mx-auto max-w-6xl px-5 py-20 lg:py-28" aria-labelledby="convidados-titulo">
-  <div class="reveal mx-auto max-w-xl text-center">
+  <div class="mx-auto max-w-xl text-center">
     <p class="eyebrow">Nos bastidores dos eventos</p>
     <h2 id="convidados-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-4xl">Gente que já <span class="text-gold-i">brindou com a gente.</span></h2>
     <p class="mt-3 text-sm text-mute">Todo evento tem a sua gente. Alguns desses momentos a gente guardou em foto.</p>
   </div>
-  <ul class="pessoas zoomable reveal mt-12">
+  <ul class="pessoas zoomable mt-12">
     <li>
       <figure class="frame aspect-square border border-white/10 !rounded-2xl"><img width="720" height="720" src="assets/imgs/convidados/convidados-01.webp" alt="Selfie em evento: dois homens sorrindo, um deles segurando um drink verde" loading="lazy"></figure>
     </li>
@@ -302,23 +309,36 @@
 <section id="contato" class="relative overflow-hidden" aria-labelledby="contato-titulo">
   <div class="frame absolute inset-0 !rounded-none" aria-hidden="true"><img width="1440" height="1440" class="contato-img" src="assets/imgs/galeria/bancada/bancada-neon-azul.webp" alt="" loading="lazy"><div class="contato-ov"></div></div>
   <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
-    <div class="reveal">
+    <div>
       <p class="eyebrow">Vamos celebrar?</p>
       <h2 id="contato-titulo" class="mt-3 font-display text-3xl font-semibold leading-tight lg:text-5xl">Me conta como vai ser <span class="text-grad">a sua festa.</span></h2>
       <p class="mt-4 max-w-md text-sm leading-relaxed text-mute">Preenche os dados aqui embaixo e a gente continua a conversa no WhatsApp, com uma proposta pensada pro seu evento.</p>
       <p class="mt-7 flex items-center gap-3 text-sm"><span class="grid h-11 w-11 place-items-center rounded-full bg-mint/20 text-mint"><svg class="ic !h-5 !w-5" aria-hidden="true"><use href="#i-wa"/></svg></span>Resposta rápida, direto com a gente</p>
     </div>
-    <form id="quote-form" novalidate class="reveal glass rounded-3xl bg-surface/85 p-6 sm:p-8">
-      <div class="grid gap-4 sm:grid-cols-2">
-        <label class="text-xs sm:col-span-2">Nome completo<input id="f-nome" name="nome" class="field mt-1.5" placeholder="Como podemos te chamar?" required autocomplete="name"></label>
-        <label class="text-xs sm:col-span-2">Tipo de evento<select id="f-tipo" name="tipo" class="field mt-1.5" required><option value="">Selecione uma opção</option><option>Casamento</option><option>Aniversário</option><option>Confraternização</option><option>Evento corporativo</option><option>Outro</option></select></label>
-        <label class="text-xs">Região do evento<select name="regiao" class="field mt-1.5" required><option value="">Selecione a região</option><option>Zona Sul</option><option>Zona Norte</option><option>Zona Oeste</option><option>Barra e Recreio</option><option>Centro</option><option>Niterói e São Gonçalo</option><option>Baixada Fluminense</option><option>Outra região</option></select></label>
-        <label class="text-xs">Bairro do evento<input name="bairro" class="field mt-1.5" placeholder="Ex: Botafogo" required></label>
-        <label class="text-xs">Data do evento<input id="f-data" name="data" type="date" class="field mt-1.5" required></label>
-        <label class="text-xs">Número de convidados<input id="f-convidados" name="convidados" type="number" min="1" inputmode="numeric" class="field mt-1.5" placeholder="Ex: 80" required></label>
+    <form id="quote-form" novalidate class="glass quote-form">
+      <div class="qf-sec">
+        <p class="qf-step"><span>01</span> Você</p>
+        <label class="lbl">Nome completo<input id="f-nome" name="nome" class="field" placeholder="Como podemos te chamar?" required autocomplete="name"></label>
       </div>
-      <button class="btn btn-primary mt-6 w-full !py-3.5">Falar no WhatsApp <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></button>
-      <p class="mt-3 text-center text-xs text-mute">Sem compromisso. É só para entendermos a sua festa.</p>
+      <div class="qf-sec">
+        <p class="qf-step"><span>02</span> Sua festa</p>
+        <div class="qf-row">
+          <label class="lbl qf-full">Tipo de evento<select name="tipo" class="field" required><option value="">Selecione o tipo de evento</option><option>Casamento</option><option>Aniversário</option><option>Confraternização</option><option>Corporativo</option><option>Outro</option></select></label>
+          <label class="lbl">Região do evento<select name="regiao" class="field" required><option value="">Selecione a região</option><option>Zona Sul</option><option>Zona Norte</option><option>Zona Oeste</option><option>Barra e Recreio</option><option>Centro</option><option>Niterói e São Gonçalo</option><option>Baixada Fluminense</option><option>Outra região</option></select></label>
+          <label class="lbl">Bairro do evento<input name="bairro" class="field" placeholder="Ex: Botafogo" required></label>
+          <label class="lbl">Data do evento<input id="f-data" name="data" type="date" class="field" required></label>
+          <label class="lbl">Número de convidados<input id="f-convidados" name="convidados" type="number" min="1" inputmode="numeric" class="field" placeholder="Ex: 80" required></label>
+        </div>
+      </div>
+      <div class="qf-sec">
+        <p class="qf-step"><span>03</span> O que você precisa</p>
+        <fieldset class="svc"><legend>Serviços desejados <em>(um ou mais)</em></legend>
+          <div class="svc-grid"><label class="svc-opt"><input type="checkbox" name="servicos" value="Open Bar" class="svc-item"><span>Open Bar</span></label><label class="svc-opt"><input type="checkbox" name="servicos" value="Churrasco" class="svc-item"><span>Churrasco</span></label><label class="svc-opt"><input type="checkbox" name="servicos" value="Feijoada" class="svc-item"><span>Feijoada</span></label><label class="svc-opt svc-all"><input type="checkbox" id="svc-todos"><span>Todos os serviços</span></label></div>
+        </fieldset>
+      </div>
+      <p id="qf-summary" class="qf-summary" role="alert" aria-live="assertive" hidden></p>
+      <button type="submit" class="btn btn-primary w-full qf-submit">Falar no WhatsApp <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></button>
+      <p class="qf-note">Sem compromisso. É só para entendermos a sua festa.</p>
     </form>
   </div>
 </section>
@@ -352,14 +372,19 @@
     </div>
   </div>
 </footer>
+</div></div>
 
-<a href="https://wa.me/5521969387635?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp"
+<a id="wa-float" href="https://wa.me/5521969387635?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp"
    class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/40 transition hover:scale-105 sm:bottom-6 sm:right-6">
   <svg class="ic !h-7 !w-7" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
 <dialog id="lightbox" aria-label="Foto ampliada"><div class="lb-wrap"><img alt=""><button class="lb-btn lb-x" data-lb="close" aria-label="Fechar"><svg class="ic"><use href="#i-x"/></svg></button><button class="lb-btn lb-l" data-lb="-1" aria-label="Foto anterior"><svg class="ic"><use href="#i-left"/></svg></button><button class="lb-btn lb-r" data-lb="1" aria-label="Próxima foto"><svg class="ic"><use href="#i-right"/></svg></button></div></dialog>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollSmoother.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/webgl-fluid@0.3.0" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

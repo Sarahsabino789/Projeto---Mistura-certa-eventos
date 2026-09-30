@@ -1,0 +1,75 @@
+/* =====================================================================
+   RESPONSIVO — todas as media queries de largura do projeto.
+   Carregar DEPOIS de styles.css. Base = mobile-first; ajustes crescem em:
+   640 (sm) · 768 (md) · 1024 (lg).
+   ===================================================================== */
+
+/* ---- Blocos migrados do styles.css (ordem original preservada) ---- */
+@media (min-width:768px) { .btn-head { display:inline-flex; } .head-bar { height:5.5rem; } .logo-head { width:4.75rem; height:4.75rem; } }
+@media (min-width:640px) { .team-card { position:absolute; right:-1rem; bottom:-1.5rem; margin:0; max-width:13.5rem; } }
+@media (min-width:768px) {
+  .gal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; overflow:visible; scroll-snap-type:none; }
+  .gal-grid > figure { flex:none; }
+  .pessoas { flex-wrap:wrap; justify-content:center; overflow:visible; scroll-snap-type:none; gap:1rem; }
+  .pessoas > li { flex:0 0 calc(25% - .75rem); }
+}
+@media (min-width:1024px) { .gal-grid { grid-template-columns:repeat(4,1fr); } }
+@media (min-width:640px) { .hero-stats { grid-template-columns:repeat(3,1fr); } }
+@media (min-width:768px) { .apoio { grid-template-columns:minmax(0,22rem) 1fr; } .apoio-txt { padding:2.5rem 3rem; } }
+@media (min-width:640px) { .svc-grid { grid-template-columns:repeat(4,1fr); } }
+@media (max-width:767px) {
+  #inicio { display:block; min-height:0; padding:5.25rem 0 3rem; }
+  #inicio .hero-bg { position:relative; inset:auto; width:100%; height:auto; aspect-ratio:16/9; }
+  #inicio .hero-slide { object-fit:contain; }
+  #inicio .hero-bg > div:first-of-type { display:none; }
+  #inicio .hero-bg > div:last-of-type { height:2.5rem; }
+  #inicio .hero-content { padding-top:1.75rem; }
+}
+@media (max-width:1023px) {
+  #contato .contato-img { object-position:center; }
+  #contato .contato-ov { background:linear-gradient(180deg,rgba(18,18,18,.82),rgba(18,18,18,.74) 50%,rgba(18,18,18,.86)); }
+}
+@media (min-width:1024px) {
+  .svc-media { width:100%; max-width:26rem; justify-self:center; }
+  .svc-media.fit > img { height:auto; }
+  .team-frame { max-width:22rem; aspect-ratio:1000/1329; }
+  .team-frame > img { position:absolute; inset:0; height:100%; object-fit:cover; }
+}
+@media (min-width:768px) {
+  .apoio { grid-template-columns:minmax(0,19rem) 1fr; }
+  .apoio-img { position:relative; aspect-ratio:1440/1919; }
+  .apoio-img img { position:absolute; inset:0; }
+}
+@media (min-width:768px) { .dep-list { gap:2rem; } .dep-item { padding:1.4rem; } }
+@media (min-width:640px) { .svc-grid-tipo { grid-template-columns:repeat(3,1fr); } }
+@media (min-width:1024px) {
+  .svc-media { max-width:30rem; }
+}
+@media (min-width:640px) { .team-card { right:-3rem; bottom:-1.5rem; max-width:13rem; } }
+@media (min-width:640px) { .quote-form { padding:2.25rem; } }
+@media (min-width:640px) { .qf-row { grid-template-columns:1fr 1fr; gap:1.25rem 1rem; } }
+
+/* =====================================================================
+   AJUSTES FINAIS (vencem os blocos acima por virem depois)
+   ===================================================================== */
+
+/* HERO tablet/desktop: a foto preenche a seção inteira (cover). No desktop a altura acompanha a proporção 16:9 da foto (56.25vw) → sem corte em qualquer largura.
+   max-height removido: o teto de 800px cortava as laterais em telas largas. */
+@media (min-width:1024px) {
+  #inicio { min-height:max(80vh,56.25vw); max-height:none; align-items:flex-start; padding-top:8rem; padding-bottom:6rem; } /* texto ancorado no topo, mesma posição do original */
+}
+
+/* ARTIGOS desktop: imagem (30rem) maior que o bloco de texto ao lado */
+@media (min-width:1024px) {
+  .svc-media { max-width:30rem; }
+}
+
+/* EQUIPE: levemente maior que as demais imagens (24rem de largura ≈ 32rem de altura vs 30rem dos artigos), bem menor que o original */
+.team-wrap { max-width:17rem; }
+.team-frame { max-width:17rem; }
+.team-card { max-width:17rem; }
+@media (min-width:640px) { .team-card { right:-2.5rem; bottom:-1.5rem; max-width:13rem; } }
+@media (min-width:1024px) { .team-wrap { max-width:24rem; } .team-frame { max-width:24rem; aspect-ratio:1000/1329; } }
+
+/* DRINKS desktop: vídeo ao lado da lista, mas mais abaixo → só aparece depois da animação da lista terminar */
+@media (min-width:1024px) { .drinks-video { align-self:end; margin-bottom:-3rem; } }
