@@ -133,7 +133,7 @@ quoteForm.addEventListener("submit", (e) => {
   if (!f.get("data")) erros.push(["data", "Informe a data do evento."]);
   else if (f.get("data") < hoje) erros.push(["data", "Escolha uma data a partir de hoje."]);
   const conv = Number(f.get("convidados"));
-  if (!Number.isInteger(conv) || conv < 1) erros.push(["convidados", "Informe um número válido de convidados."]);
+  if (!Number.isInteger(conv) || conv < 30 || conv > 10000) erros.push(["convidados", "Informe de 30 a 10.000 convidados."]);
   const sel = f.getAll("servicos");
   if (!sel.length) erros.push(["servicos", "Escolha pelo menos um serviço."]);
 

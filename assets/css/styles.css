@@ -99,6 +99,8 @@ h3.font-display { font-size:1.9rem; line-height:1.1; }
 /* Slider do hero: só crossfade lento; o texto fica fora do slider e não se move (ritmo dos 3 slides definido mais abaixo) */
 .hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; }
 .hero-slide ~ div { z-index:5; }
+picture.hero-slide { display:block; }
+picture.hero-slide img { display:block; width:100%; height:100%; object-fit:inherit; }
 @media (prefers-reduced-motion:reduce) { .hero-slide { animation:none; } .hero-slide:first-child { opacity:1; } .btn-primary::before, .btn-ghost::before, .btn-outline::before, .btn-outline .ic { transition:none; } }
 
 /* Métricas do hero */
@@ -146,7 +148,7 @@ h3.font-display { font-size:1.9rem; line-height:1.1; }
 .svc-opt { display:flex; align-items:center; gap:.5rem; padding:.65rem .8rem; border:1px solid rgba(255,255,255,.12); border-radius:.9rem; background:rgba(255,255,255,.06); font-size:.85rem; line-height:1.2; cursor:pointer; transition:border-color .25s, background .25s; }
 .svc-opt input { width:1.05rem; height:1.05rem; flex:none; accent-color:var(--gold); }
 .svc-opt:has(input:checked) { border-color:rgba(212,175,55,.6); background:rgba(212,175,55,.12); }
-.svc-opt:has(input:focus-visible) { outline:2px solid var(--gold); outline-offset:2px; }
+.svc-opt:has(input:focus-visible), .svc-opt input:focus-visible { outline:none; }
 .field.invalid { border-color:var(--red); }
 .err { display:block; margin-top:.35rem; font-size:.75rem; color:#ff8a8a; }
 
@@ -193,7 +195,6 @@ select.field { -webkit-appearance:none; appearance:none; padding-right:2.6rem; c
 .lbl .err { text-transform:none; letter-spacing:0; font-weight:400; }
 .field { color-scheme:dark; padding:.85rem 1rem; }
 .svc-opt { padding:.6rem 1rem; border-radius:9999px; white-space:nowrap; }
-.svc-all { border-style:dashed; border-color:rgba(212,175,55,.45); }
 .qf-submit { margin-top:.25rem; padding-block:1rem; font-size:.95rem; }
 .qf-note { margin-top:-.75rem; text-align:center; font-size:.78rem; color:#9a9a9a; }
 
