@@ -35,12 +35,6 @@ body { overflow-x:hidden; font-family:'Barlow',system-ui,sans-serif; font-size:1
 
 .leader { flex:1; border-bottom:1px dotted rgba(255,255,255,.28); transform:translateY(-.25rem); }
 
-.wa-wall { background-color:#0b141a; background-image:radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px); background-size:14px 14px; }
-.wa-in, .wa-out { position:relative; max-width:88%; padding:.5rem .7rem 1.15rem; font-size:.85rem; line-height:1.4; border-radius:.75rem; color:#e9edef; }
-.wa-in { background:#202c33; border-top-left-radius:.15rem; align-self:flex-start; }
-.wa-out { background:#005c4b; border-top-right-radius:.15rem; align-self:flex-end; }
-.wa-time { position:absolute; right:.6rem; bottom:.25rem; display:flex; align-items:center; gap:.2rem; font-size:.65rem; color:rgba(233,237,239,.6); }
-
 .field { width:100%; border-radius:.9rem; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); padding:.8rem 1rem; font-size:.85rem; color:#fff; transition:border-color .25s; }
 .field::placeholder { color:#9a9a9a; }
 .field:focus { outline:none; border-color:var(--gold); }
@@ -48,19 +42,12 @@ body { overflow-x:hidden; font-family:'Barlow',system-ui,sans-serif; font-size:1
 select.field option { background:#1A1A1A; }
 
 
-/* Animações de rolagem só em CSS; sem suporte, o conteúdo aparece normalmente */
-@supports (animation-timeline: view()) {
-  .parallax { height:135%; top:-17%; animation:drift linear both; animation-timeline:view(); animation-range:cover; }
-}
-@keyframes drift { from { transform:translateY(-9%); } to { transform:translateY(9%); } }
-
 /* Header: transparente sobre o hero; fundo aplicado via JS (classe .scrolled) assim que a rolagem começa */
 #header { background:transparent; border-bottom:1px solid transparent; backdrop-filter:none; transition:background .3s, border-color .3s, backdrop-filter .3s; }
 #header.scrolled { background:rgba(18,18,18,.94); border-bottom-color:rgba(255,255,255,.1); backdrop-filter:blur(12px); }
 
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
-  .reveal, .parallax { animation:none !important; }
   .hero-slide { animation:none; } .hero-slide:first-child { opacity:1; }
   .slide { transition:none; }
 }
@@ -77,7 +64,6 @@ h3.font-display { font-size:1.9rem; line-height:1.1; }
 .btn-sm { padding:.5rem 1.05rem; font-size:.8rem; }
 .btn-head { display:none; }
 .head-bar { height:5.25rem; }
-.pos-top { object-position:center 25%; }
 
 .team-frame { max-width:26rem; margin-inline:auto; }
 .team-card { position:relative; margin:.9rem auto 0; max-width:26rem; padding:1rem 1.2rem; border-radius:1rem; background:rgba(18,18,18,.85); border-color:rgba(212,175,55,.3); }
@@ -103,18 +89,16 @@ h3.font-display { font-size:1.9rem; line-height:1.1; }
 .btn-primary { position:relative; overflow:hidden; isolation:isolate; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.35); background:linear-gradient(115deg,#FF8A1F 0%,#FF5A36 55%,#E63946 100%); background-size:200% 100%; box-shadow:0 10px 28px -10px rgba(255,90,54,.7); transition:transform .25s, background-position .6s; }
 .btn-primary::before { content:""; position:absolute; z-index:-1; inset:-60% -20%; background:radial-gradient(circle at 25% 70%,rgba(255,214,102,.55) 0 16%,transparent 17%),radial-gradient(circle at 75% 35%,rgba(255,255,255,.28) 0 12%,transparent 13%),radial-gradient(circle at 50% 100%,rgba(214,40,57,.55) 0 22%,transparent 23%); transform:translateX(-35%); transition:transform .9s cubic-bezier(.2,.7,.2,1); }
 .btn-primary:hover { transform:translateY(-2px); background-position:100% 0; }
-.btn-primary:active, .btn-primary.is-pressed { transition-duration:.12s; transform:scale(.96); filter:brightness(.92); }
+.btn-primary:active { transition-duration:.12s; transform:scale(.96); filter:brightness(.92); }
 .btn-primary:hover::before { transform:translateX(35%) rotate(8deg); }
 .btn-ghost { position:relative; overflow:hidden; isolation:isolate; }
 .btn-ghost::before { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(0deg,rgba(255,138,31,.55),rgba(230,57,70,.35)); border-radius:45% 45% 0 0/18% 18% 0 0; transform:translateY(101%); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
 .btn-ghost:hover::before { transform:translateY(0); }
-.btn-ghost:active, .btn-ghost.is-pressed { transition-duration:.12s; transform:scale(.96); }
+.btn-ghost:active { transition-duration:.12s; transform:scale(.96); }
 
-/* Slider do hero: só crossfade lento; o texto fica fora do slider e não se move */
-.hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; animation:heroFade 16s ease-in-out infinite; }
-.hero-slide:nth-child(1) { animation-delay:0s; } .hero-slide:nth-child(2) { animation-delay:8s; }
+/* Slider do hero: só crossfade lento; o texto fica fora do slider e não se move (ritmo dos 3 slides definido mais abaixo) */
+.hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; }
 .hero-slide ~ div { z-index:5; }
-@keyframes heroFade { 0% { opacity:0; } 6%,42% { opacity:1; } 48%,100% { opacity:0; } }
 @media (prefers-reduced-motion:reduce) { .hero-slide { animation:none; } .hero-slide:first-child { opacity:1; } .btn-primary::before, .btn-ghost::before, .btn-outline::before, .btn-outline .ic { transition:none; } }
 
 /* Métricas do hero */
@@ -128,8 +112,7 @@ h3.font-display { font-size:1.9rem; line-height:1.1; }
 .btn-outline:hover { color:#fff; box-shadow:0 8px 22px -10px rgba(255,90,54,.75); }
 .btn-outline:hover::before { clip-path:inset(0 0 0 0 round 9999px); }
 .btn-outline:hover .ic { transform:translateX(3px); }
-.btn-outline:active, .btn-outline.is-pressed { transition-duration:.12s; transform:scale(.96); }
-a.is-pressed { transform:scale(.94); transition:transform .12s ease; }
+.btn-outline:active { transition-duration:.12s; transform:scale(.96); }
 
 /* Foto inteira: largura do card, altura da foto, sem corte nem faixa */
 .frame.fit { background:none; }
@@ -160,7 +143,6 @@ a.is-pressed { transform:scale(.94); transition:transform .12s ease; }
 /* Formulário: serviços (checkboxes combináveis) e mensagens de erro */
 .svc { border:0; padding:0; margin:0; min-width:0; }
 .svc legend { padding:0; margin-bottom:.5rem; }
-.svc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.6rem; }
 .svc-opt { display:flex; align-items:center; gap:.5rem; padding:.65rem .8rem; border:1px solid rgba(255,255,255,.12); border-radius:.9rem; background:rgba(255,255,255,.06); font-size:.85rem; line-height:1.2; cursor:pointer; transition:border-color .25s, background .25s; }
 .svc-opt input { width:1.05rem; height:1.05rem; flex:none; accent-color:var(--gold); }
 .svc-opt:has(input:checked) { border-color:rgba(212,175,55,.6); background:rgba(212,175,55,.12); }
@@ -177,22 +159,18 @@ a.is-pressed { transform:scale(.94); transition:transform .12s ease; }
 /* Formulário: selects e opções alinhados ao design */
 select.field { -webkit-appearance:none; appearance:none; padding-right:2.6rem; cursor:pointer;
   background:rgba(255,255,255,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 1rem center/1rem no-repeat; }
-.svc-grid-tipo { grid-template-columns:repeat(2,1fr); }
 .svc-opt input { -webkit-appearance:none; appearance:none; display:grid; place-items:center; width:1.1rem; height:1.1rem; border:1.5px solid rgba(255,255,255,.35); border-radius:.3rem; background:transparent; transition:background .2s, border-color .2s; cursor:pointer; }
-.svc-opt input[type=radio] { border-radius:9999px; }
 .svc-opt input:checked { border-color:var(--gold); }
 .svc-opt input[type=checkbox]:checked { background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121212' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/.7rem no-repeat; }
-.svc-opt input[type=radio]:checked { background:radial-gradient(circle,var(--gold) 0 38%,transparent 42%); }
 .err-group { margin-top:.5rem; }
 
-/* Card líquido: canvas webgl-fluid como fundo do painel de texto; tinta quente + véu escuro garantem a leitura */
-.liquid-card { position:relative; overflow:hidden; isolation:isolate; background:radial-gradient(circle at 20% 20%,rgba(255,138,31,.22),transparent 55%),radial-gradient(circle at 85% 85%,rgba(230,57,70,.2),transparent 55%),#161311; }
+/* Card líquido: fundo preto (parte vazia do copo) + canvas de água; o véu leve garante a leitura do texto sobre a água */
+.liquid-card { position:relative; overflow:hidden; isolation:isolate; background:#050505; }
 .liquid-card > * { position:relative; z-index:3; pointer-events:none; }
 .liquid-card > a { pointer-events:auto; }
-.liquid-card > #liquid { position:absolute; z-index:0; inset:0; width:100%; height:100%; pointer-events:auto; opacity:0; transition:opacity 1s; touch-action:pan-y; }
+.liquid-card > #liquid { position:absolute; z-index:0; inset:0; width:100%; height:100%; opacity:0; transition:opacity 1s; }
 .liquid-card > #liquid.on { opacity:1; }
-.liquid-tint { position:absolute !important; z-index:1 !important; inset:0; background:linear-gradient(135deg,#FF8A1F,#E63946 70%,#D4AF37); mix-blend-mode:color; }
-.liquid-card::after { content:""; position:absolute; z-index:2; inset:0; background:rgba(14,12,11,.5); pointer-events:none; }
+.liquid-card::after { content:""; position:absolute; z-index:2; inset:0; background:rgba(0,0,0,.08); pointer-events:none; }
 
 
 /* ===== HERO: 3 slides, crossfade contínuo de 24s (8s por slide) ===== */
@@ -201,23 +179,19 @@ select.field { -webkit-appearance:none; appearance:none; padding-right:2.6rem; c
 .hero-slide:nth-child(2) { animation-delay:-16s; }
 .hero-slide:nth-child(3) { animation-delay:-8s; }
 @keyframes heroFade { 0%,25% { opacity:1; } 33%,91% { opacity:0; } 100% { opacity:1; } }
+/* Movimento reduzido: fica só a 1ª foto (precisa vir DEPOIS da animação acima para vencer a regra) */
+@media (prefers-reduced-motion:reduce) { .hero-slide { animation:none; } .hero-slide:first-child { opacity:1; } }
 
 /* ===== EQUIPE: foto menor que as demais imagens da página ===== */
 .team-wrap { position:relative; width:100%; margin-inline:auto; }
 /* ===== FORMULÁRIO ===== */
-.quote-form { display:flex; flex-direction:column; gap:1.75rem; padding:1.5rem; border-radius:1.5rem; background:rgba(22,20,19,.88); border-color:rgba(255,255,255,.1); }
-.qf-sec { display:flex; flex-direction:column; gap:1.1rem; }
-.qf-sec + .qf-sec { padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.08); }
-.qf-step { display:flex; align-items:center; gap:.6rem; font-size:.7rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
-.qf-step span { display:grid; place-items:center; width:1.6rem; height:1.6rem; border-radius:9999px; background:rgba(212,175,55,.14); border:1px solid rgba(212,175,55,.35); letter-spacing:0; font-size:.68rem; }
+.quote-form { display:flex; flex-direction:column; gap:1rem; padding:1.5rem; border-radius:1.5rem; background:rgba(22,20,19,.88); border-color:rgba(255,255,255,.1); }
 .lbl, .svc legend { display:block; font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#d6d6d6; }
 .lbl .field { margin-top:.5rem; letter-spacing:normal; text-transform:none; font-weight:400; }
 .svc legend em { font-style:normal; font-weight:400; letter-spacing:0; text-transform:none; color:#9a9a9a; }
 .svc legend { margin-bottom:.7rem; }
 .lbl .err { text-transform:none; letter-spacing:0; font-weight:400; }
-.qf-row { display:grid; gap:1.1rem; }
 .field { color-scheme:dark; padding:.85rem 1rem; }
-.svc-grid, .svc-grid-tipo { display:flex; flex-wrap:wrap; gap:.6rem; }
 .svc-opt { padding:.6rem 1rem; border-radius:9999px; white-space:nowrap; }
 .svc-all { border-style:dashed; border-color:rgba(212,175,55,.45); }
 .qf-submit { margin-top:.25rem; padding-block:1rem; font-size:.95rem; }
@@ -252,3 +226,49 @@ html.has-smoother { scroll-behavior:auto; }
 
 /* ===== BARRA DE ROLAGEM SIMPLES: fina, cor sólida, sem degradê ===== */
 html { scrollbar-width:thin; scrollbar-color:#555 #121212; }
+
+/* ===== FORMULÁRIO COMPACTO: altura próxima do original, campos em 2 colunas ===== */
+.qf-grid { display:grid; gap:1rem; }
+.qf-grid .lbl .field { margin-top:.4rem; padding:.7rem .9rem; }
+.svc-opt { padding:.5rem .9rem; }
+.svc legend { margin-bottom:.5rem; }
+.qf-submit { margin-top:0; padding-block:.9rem; }
+.qf-note { margin-top:-.25rem; }
+/* Chips da galeria: sem transição de transform (GSAP anima a entrada em onda) */
+.chip { transition:color .25s, background .25s, border-color .25s; }
+
+/* Serviços do formulário: 3 colunas de mesma largura; "Todos" ocupa a linha inteira, alinhado às bordas dos 3.
+   Seletor com fieldset para vencer qualquer regra antiga de .svc-grid, independente da ordem dos arquivos */
+fieldset.svc legend { width:100%; text-align:center; }
+fieldset.svc .svc-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; }
+fieldset.svc .svc-opt { justify-content:center; padding:.5rem; }
+fieldset.svc .svc-all { grid-column:1/-1; }
+fieldset.svc .err-group { text-align:center; }
+
+/* Card "Como funciona": fumaça fluida (canvas WebGL) reagindo ao mouse e ao toque */
+.liquid-card { -webkit-user-select:none; user-select:none; }
+.liquid-card.no-fluid { background:radial-gradient(70% 90% at 78% 100%, rgba(164,32,36,.45), transparent 70%), #050505; }   /* sem WebGL: brilho estático nas cores da marca */
+
+.apoio-sec { padding-top:4.75rem; }
+.apoio { position:relative; overflow:visible; }
+/* texto legível mesmo com a fumaça passando atrás dele */
+.liquid-card .apoio-desc, .liquid-card .apoio-title { text-shadow:0 1px 10px rgba(0,0,0,.75); }
+@media (min-width:768px) {
+  .apoio > .apoio-img { overflow:hidden; border-radius:calc(1.5rem - 1px) 0 0 calc(1.5rem - 1px); }
+  .apoio > .apoio-txt { border-radius:0 calc(1.5rem - 1px) calc(1.5rem - 1px) 0; }
+}
+@media (max-width:767px) { .apoio > .apoio-txt { border-radius:calc(1.5rem - 1px); } }
+
+/* ===== DICA DE INTERAÇÃO (Como funciona): decorativa, não é botão.
+   O JS adiciona .has-hint quando a fumaça funciona e alterna .hint-off ao pairar/tocar ===== */
+.liquid-card > .liquid-hint { position:absolute; z-index:4; right:1.25rem; bottom:1.1rem; display:inline-flex; align-items:center; gap:.55rem; margin:0; padding:.4rem .9rem .4rem .45rem; border-radius:9999px;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  color:#fff; font-size:.75rem; font-weight:600; letter-spacing:.04em; opacity:0; transform:translateY(6px); transition:opacity .35s, transform .35s; }
+.liquid-card.has-hint:not(.hint-off) > .liquid-hint { opacity:1; transform:none; transition-duration:.6s; transition-delay:.8s; }   /* atraso só ao aparecer; ao sumir é imediato */
+.hint-ic { position:relative; display:grid; place-items:center; flex:none; width:1.6rem; height:1.6rem; border-radius:9999px; background:#FF8A1F; }
+.hint-ic::after { content:""; position:absolute; inset:0; border-radius:inherit; border:2px solid #FF8A1F; animation:hintPulse 1.8s ease-out infinite; }
+.hint-ic .ic { width:.85rem; height:.85rem; animation:hintNudge 1.8s ease-in-out infinite; }
+.hint-touch { display:none; }
+@media (hover:none) { .hint-mouse { display:none; } .hint-touch { display:inline; } }   /* celular/tablet: "toque"; mouse: "passe" */
+@keyframes hintPulse { 0% { transform:scale(1); opacity:.9; } 100% { transform:scale(1.9); opacity:0; } }
+@keyframes hintNudge { 0%,100% { transform:translate(0,0); } 50% { transform:translate(2px,2px); } }

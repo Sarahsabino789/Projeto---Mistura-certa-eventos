@@ -6,7 +6,6 @@
 
 /* ---- Blocos migrados do styles.css (ordem original preservada) ---- */
 @media (min-width:768px) { .btn-head { display:inline-flex; } .head-bar { height:5.5rem; } .logo-head { width:4.75rem; height:4.75rem; } }
-@media (min-width:640px) { .team-card { position:absolute; right:-1rem; bottom:-1.5rem; margin:0; max-width:13.5rem; } }
 @media (min-width:768px) {
   .gal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; overflow:visible; scroll-snap-type:none; }
   .gal-grid > figure { flex:none; }
@@ -15,8 +14,7 @@
 }
 @media (min-width:1024px) { .gal-grid { grid-template-columns:repeat(4,1fr); } }
 @media (min-width:640px) { .hero-stats { grid-template-columns:repeat(3,1fr); } }
-@media (min-width:768px) { .apoio { grid-template-columns:minmax(0,22rem) 1fr; } .apoio-txt { padding:2.5rem 3rem; } }
-@media (min-width:640px) { .svc-grid { grid-template-columns:repeat(4,1fr); } }
+@media (min-width:768px) { .apoio-txt { padding:2.5rem 3rem; } }
 @media (max-width:767px) {
   #inicio { display:block; min-height:0; padding:5.25rem 0 3rem; }
   #inicio .hero-bg { position:relative; inset:auto; width:100%; height:auto; aspect-ratio:16/9; }
@@ -30,9 +28,8 @@
   #contato .contato-ov { background:linear-gradient(180deg,rgba(18,18,18,.82),rgba(18,18,18,.74) 50%,rgba(18,18,18,.86)); }
 }
 @media (min-width:1024px) {
-  .svc-media { width:100%; max-width:26rem; justify-self:center; }
+  .svc-media { width:100%; max-width:30rem; justify-self:center; }
   .svc-media.fit > img { height:auto; }
-  .team-frame { max-width:22rem; aspect-ratio:1000/1329; }
   .team-frame > img { position:absolute; inset:0; height:100%; object-fit:cover; }
 }
 @media (min-width:768px) {
@@ -41,13 +38,6 @@
   .apoio-img img { position:absolute; inset:0; }
 }
 @media (min-width:768px) { .dep-list { gap:2rem; } .dep-item { padding:1.4rem; } }
-@media (min-width:640px) { .svc-grid-tipo { grid-template-columns:repeat(3,1fr); } }
-@media (min-width:1024px) {
-  .svc-media { max-width:30rem; }
-}
-@media (min-width:640px) { .team-card { right:-3rem; bottom:-1.5rem; max-width:13rem; } }
-@media (min-width:640px) { .quote-form { padding:2.25rem; } }
-@media (min-width:640px) { .qf-row { grid-template-columns:1fr 1fr; gap:1.25rem 1rem; } }
 
 /* =====================================================================
    AJUSTES FINAIS (vencem os blocos acima por virem depois)
@@ -59,17 +49,29 @@
   #inicio { min-height:max(80vh,56.25vw); max-height:none; align-items:flex-start; padding-top:8rem; padding-bottom:6rem; } /* texto ancorado no topo, mesma posição do original */
 }
 
-/* ARTIGOS desktop: imagem (30rem) maior que o bloco de texto ao lado */
+/* EQUIPE: abaixo de 1024px a foto e o card embaixo dela ocupam a mesma largura das demais imagens (até 30rem).
+   Sem recorte: a altura acompanha a proporção da foto. O card só vira sobreposto no canto a partir do desktop. */
+.team-wrap { max-width:30rem; }
+.team-frame, .team-card { max-width:none; }
 @media (min-width:1024px) {
-  .svc-media { max-width:30rem; }
+  .team-wrap { max-width:24rem; }
+  .team-frame { max-width:24rem; aspect-ratio:1000/1329; }
+  .team-card { position:absolute; right:-2.5rem; bottom:-1.5rem; margin:0; max-width:13rem; }
 }
 
-/* EQUIPE: levemente maior que as demais imagens (24rem de largura ≈ 32rem de altura vs 30rem dos artigos), bem menor que o original */
-.team-wrap { max-width:17rem; }
-.team-frame { max-width:17rem; }
-.team-card { max-width:17rem; }
-@media (min-width:640px) { .team-card { right:-2.5rem; bottom:-1.5rem; max-width:13rem; } }
-@media (min-width:1024px) { .team-wrap { max-width:24rem; } .team-frame { max-width:24rem; aspect-ratio:1000/1329; } }
+/* COMO FUNCIONA no celular: a água cobre o card inteiro e a foto (inteira, sem corte) fica por cima, num quadro menor (~45% da altura).
+   O padding-top do texto reserva o espaço da foto: a % do padding usa a mesma largura de referência da foto (1919/1440 = proporção da imagem) */
+@media (max-width:767px) {
+  .apoio-img, .apoio-txt { grid-area:1/1; }
+  .apoio-img { position:relative; z-index:5; align-self:start; width:min(66%,15rem); margin:1.25rem auto 0; border-radius:1rem; overflow:hidden; pointer-events:none; }
+  .apoio-txt { padding:calc(2.5rem + min(66%,15rem) * 1.3326) 1.5rem 4rem; }   /* 4rem embaixo: espaço da dica de interação */
+  .liquid-card > .liquid-hint { left:1.5rem; right:auto; bottom:1.1rem; }
+}
 
 /* DRINKS desktop: vídeo ao lado da lista, mas mais abaixo → só aparece depois da animação da lista terminar */
 @media (min-width:1024px) { .drinks-video { align-self:end; margin-bottom:-3rem; } }
+
+/* FORMULÁRIO: 2 colunas a partir de 640px (nome|tipo, região|bairro, data|convidados) */
+@media (min-width:640px) { .quote-form { padding:2rem; } .qf-grid { grid-template-columns:1fr 1fr; gap:1rem; } }
+
+@media (max-width:479px) { .svc-opt { gap:.35rem; padding:.5rem .3rem; font-size:.78rem; white-space:normal; } .svc-opt input { width:1rem; height:1rem; } }
