@@ -168,6 +168,7 @@ const lbShow = (n) => {
   const el = lbList[lbI], video = el.dataset.video;
   if (video) {
     lbImg.hidden = true; lbVid.hidden = false;
+    lbVid.muted = true;   // sempre começa mudo; a pessoa liga o som no controle do player se quiser
     lbVid.poster = el.currentSrc || el.src; lbVid.src = video; lbVid.setAttribute("aria-label", el.alt.replace(/^Reproduzir vídeo: /, ""));
     lbVid.play().catch(() => {});
   } else {
