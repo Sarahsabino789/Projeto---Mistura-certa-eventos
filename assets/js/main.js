@@ -159,9 +159,22 @@ quoteForm.addEventListener("submit", (e) => {
 });
 
 // Foto ampliada (galeria e convidados): só navega entre as fotos visíveis (respeita o filtro)
-const lb = $("#lightbox"), lbImg = $("img", lb);
+const lb = $("#lightbox"), lbImg = $("img", lb), lbVid = $("video", lb);
 let lbList = [], lbI = 0;
-const lbShow = (n) => { lbI = (n + lbList.length) % lbList.length; lbImg.src = lbList[lbI].currentSrc || lbList[lbI].src; lbImg.alt = lbList[lbI].alt; };
+// Vídeos da galeria: a miniatura (<img data-video>) abre o vídeo inteiro no lightbox, em tela cheia e sem corte
+const lbStopVideo = () => { lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute("src"); lbVid.removeAttribute("poster"); lbVid.load(); };
+const lbShow = (n) => {
+  lbI = (n + lbList.length) % lbList.length;
+  const el = lbList[lbI], video = el.dataset.video;
+  if (video) {
+    lbImg.hidden = true; lbVid.hidden = false;
+    lbVid.poster = el.currentSrc || el.src; lbVid.src = video; lbVid.setAttribute("aria-label", el.alt.replace(/^Reproduzir vídeo: /, ""));
+    lbVid.play().catch(() => {});
+  } else {
+    lbStopVideo(); lbImg.hidden = false;
+    lbImg.src = el.currentSrc || el.src; lbImg.alt = el.alt;
+  }
+};
 const openZoom = (root, img) => { lbList = $$("img", root).filter((im) => im.offsetParent !== null); lbShow(lbList.indexOf(img)); lb.showModal(); };
 $$(".zoomable").forEach((root) => {
   $$("img", root).forEach((im) => { im.tabIndex = 0; im.setAttribute("role", "button"); });
@@ -176,7 +189,8 @@ lb.addEventListener("click", (e) => {
   if (b) { b.dataset.lb === "close" ? lb.close() : lbShow(lbI + +b.dataset.lb); }
   else if (e.target === lb || e.target.classList.contains("lb-wrap")) lb.close();
 });
-addEventListener("keydown", (e) => { if (!lb.open) return; if (e.key === "ArrowLeft") lbShow(lbI - 1); if (e.key === "ArrowRight") lbShow(lbI + 1); });
+lb.addEventListener("close", lbStopVideo);   // fechar (X, fundo ou Esc) para o vídeo e libera o arquivo
+addEventListener("keydown", (e) => { if (!lb.open || e.target === lbVid) return; if (e.key === "ArrowLeft") lbShow(lbI - 1); if (e.key === "ArrowRight") lbShow(lbI + 1); });
 
 $("#year").textContent = new Date().getFullYear();
 
